@@ -3,14 +3,13 @@ const seatData = {
     1: {
         name: '홍길동',
         times: {
-            입실: '09:00',
+            입실: '오전 09:00',
             외출: '점심 시간, 12:00',
-            복귀: '14:00',
-            퇴실: '18:00'
+            복귀: '오후 02:00',
+            퇴실: '오후 06:00'
         }
     },
     // 다른 자리번호에 대한 데이터 추가 가능
-    // 예: 2: { ... }
 };
 
 function loadInfo() {
@@ -48,6 +47,9 @@ function setStatus(status) {
 }
 
 function showTime(action) {
-    const now = new Date().toLocaleTimeString();
+    const now = new Date().toLocaleTimeString('ko-KR', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
     document.getElementById(`${action}-시간-값`).innerText = now;
 }
